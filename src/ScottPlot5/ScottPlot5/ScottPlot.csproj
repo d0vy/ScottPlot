@@ -50,6 +50,7 @@
         </PackageReference>
         <PackageReference Include="SkiaSharp" Version="2.88.9" />
         <PackageReference Include="SkiaSharp.NativeAssets.Linux.NoDependencies" Version="2.88.9" />
+        <PackageReference Include="xunit" Version="2.9.2" />
     </ItemGroup>
 
     <!-- Packages allowing modern C# language features to be used in .NET Framework project -->

@@ -12,6 +12,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="xunit" Version="2.9.2" />
+    </ItemGroup>
+
+    <ItemGroup>
         <ProjectReference Include="..\..\ScottPlot5 Controls\ScottPlot.WPF\ScottPlot.WPF.csproj" />
         <ProjectReference Include="..\..\ScottPlot5\ScottPlot.csproj" />
     </ItemGroup>
