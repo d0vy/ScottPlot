@@ -15,8 +15,14 @@
 
   <ItemGroup>
     <PackageReference Include="BlazorObservers" Version="1.0.1" />
+    <PackageReference Include="coverlet.msbuild" Version="6.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.8" PrivateAssets="all" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="ReportGenerator" Version="5.3.11" />
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <PackageReference Include="xunit" Version="2.9.2" />
   </ItemGroup>
@@ -24,7 +30,6 @@
   <ItemGroup>
       <ProjectReference Include="..\..\ScottPlot5\ScottPlot.csproj" />
       <ProjectReference Include="..\..\ScottPlot5 Controls\ScottPlot.Blazor\ScottPlot.Blazor.csproj" />
-      <ProjectReference Include="..\..\ScottPlot5 Cookbook\ScottPlot Cookbook.csproj" />
   </ItemGroup>
 
   <ItemGroup>
