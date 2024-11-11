@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ScottPlot.Statistics;
+﻿using ScottPlot.Statistics;
 namespace Lab2
 {
     public class DescriptiveTests
@@ -23,12 +18,14 @@ namespace Lab2
             Assert.Throws<ArgumentException>(() => Descriptive.Sum(values));
         }
 
-        [Fact]
-        public void Mean_ValidArray_ReturnsCorrectMean()
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3, 4, 5 }, 3)]
+        [InlineData(new double[] { 5, 10, 15, 20 }, 12.5)]
+        [InlineData(new double[] { -10, -5, 10, 15, 20 }, 6)]
+        public void Mean_ValidArray_ReturnsCorrectMean(double[] values, double expectedMean)
         {
-            var values = new double[] { 1, 2, 3, 4, 5 };
             var result = Descriptive.Mean(values);
-            Assert.Equal(3, result);
+            Assert.Equal(expectedMean, result);
         }
 
         [Fact]
@@ -38,12 +35,15 @@ namespace Lab2
             Assert.Throws<ArgumentException>(() => Descriptive.Mean(values));
         }
 
-        [Fact]
-        public void Median_ValidArray_ReturnsCorrectMedian()
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3, 4, 5 }, 3)]
+        [InlineData(new double[] { 5, 10, 15, 20 }, 12.5)]
+        [InlineData(new double[] { -10, -5, 10, 15, 20 }, 10)]
+
+        public void Median_ValidArray_ReturnsCorrectMedian(double[] values, double expectedMedian)
         {
-            var values = new double[] { 1, 2, 3, 4, 5 };
             var result = Descriptive.Median(values);
-            Assert.Equal(3, result);
+            Assert.Equal(expectedMedian, result);
         }
 
         [Fact]
@@ -103,12 +103,14 @@ namespace Lab2
             Assert.Equal(0, result);
         }
 
-        [Fact]
-        public void Percentile_ValidArray_ReturnsCorrectPercentile()
+        [Theory]
+        [InlineData(new double[] { 1, 2, 3, 4, 5 }, 20, 2)]
+        [InlineData(new double[] { 1, 2, 3, 4, 5 }, 50, 3)]
+        [InlineData(new double[] { -5, 10, 20 }, 75, 20)]
+        public void Percentile_ValidArray_ReturnsCorrectPercentile(double[] values, int percentile, double expectedPercentile)
         {
-            var values = new double[] { 1, 2, 3, 4, 5 };
-            var result = Descriptive.Percentile(values, 40);
-            Assert.Equal(3, result); // was 2
+            var result = Descriptive.Percentile(values, percentile);
+            Assert.Equal(expectedPercentile, result);
         }
 
         [Fact]
