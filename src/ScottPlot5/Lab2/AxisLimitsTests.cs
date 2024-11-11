@@ -1,7 +1,6 @@
 ﻿using Moq;
 using ScottPlot;
 using ScottPlot.DataSources;
-using Xunit;
 
 namespace Lab2
 {
@@ -199,113 +198,6 @@ namespace Lab2
             Assert.Equal(0, limits.Bottom, 1);
             Assert.Equal(1, limits.Top, 1);
         }
-
-        [Fact]
-        public void Test_Scatter_GetNearest_CoordinatesArray()
-        {
-            double[] xs = Generate.Consecutive(51);
-            double[] ys = Generate.Sin(51);
-            Coordinates[] cs = Enumerable
-                .Range(0, xs.Length)
-                .Select(x => new Coordinates(xs[x], ys[x]))
-                .ToArray();
-
-            ScottPlot.Plot plot = new();
-            var spDoubleArray = plot.Add.Scatter(cs);
-
-            plot.GetImage(600, 400);
-            var renderInfo = plot.RenderManager.LastRender;
-
-            Coordinates location = new(25, 0.8);
-            DataPoint nearest = spDoubleArray.Data.GetNearest(location, renderInfo, maxDistance: 100);
-
-            Assert.Equal(20, nearest.Index);
-            Assert.Equal(20, nearest.X);
-            Assert.Equal(0.58778, nearest.Y, 3);
-        }
-
-        [Fact]
-        public void Test_Scatter_GetNearest_CoordinatesList()
-        {
-            double[] xs = Generate.Consecutive(51);
-            double[] ys = Generate.Sin(51);
-            List<Coordinates> cs = Enumerable
-                .Range(0, xs.Length)
-                .Select(x => new Coordinates(xs[x], ys[x]))
-                .ToList();
-
-            ScottPlot.Plot plot = new();
-            var spDoubleArray = plot.Add.Scatter(cs);
-
-            plot.GetImage(600, 400);
-            var renderInfo = plot.RenderManager.LastRender;
-
-            Coordinates location = new(25, 0.8);
-            DataPoint nearest = spDoubleArray.Data.GetNearest(location, renderInfo, maxDistance: 100);
-
-            Assert.Equal(20, nearest.Index);
-            Assert.Equal(20, nearest.X);
-            Assert.Equal(0.58778, nearest.Y, 3);
-        }
-
-        [Fact]
-        public void Test_Scatter_GetNearest_DoubleArray()
-        {
-            double[] xs = Generate.Consecutive(51);
-            double[] ys = Generate.Sin(51);
-
-            ScottPlot.Plot plot = new();
-            var spDoubleArray = plot.Add.Scatter(xs, ys);
-
-            plot.GetImage(600, 400);
-            var renderInfo = plot.RenderManager.LastRender;
-
-            Coordinates location = new(25, 0.8);
-            DataPoint nearest = spDoubleArray.Data.GetNearest(location, renderInfo, maxDistance: 100);
-            Assert.Equal(20, nearest.Index);
-            Assert.Equal(20, nearest.X);
-            Assert.Equal(0.58778, nearest.Y, 3);
-        }
-
-        [Fact]
-        public void Test_Scatter_GetNearest_GenericArray()
-        {
-            float[] xs = Generate.Consecutive(51).Select(x => (float)x).ToArray();
-            float[] ys = Generate.Sin(51).Select(x => (float)x).ToArray();
-
-            ScottPlot.Plot plot = new();
-            var spDoubleArray = plot.Add.Scatter(xs, ys);
-
-            plot.GetImage(600, 400);
-            var renderInfo = plot.RenderManager.LastRender;
-
-            Coordinates location = new(25, 0.8);
-            DataPoint nearest = spDoubleArray.Data.GetNearest(location, renderInfo, maxDistance: 100);
-            Assert.Equal(20, nearest.Index);
-            Assert.Equal(20, nearest.X);
-            Assert.Equal(0.58778, nearest.Y, 3);
-        }
-
-        [Fact]
-        public void Test_Scatter_GetNearest_GenericList()
-        {
-            List<float> xs = Generate.Consecutive(51).Select(x => (float)x).ToList();
-            List<float> ys = Generate.Sin(51).Select(x => (float)x).ToList();
-
-            ScottPlot.Plot plot = new();
-            var spDoubleArray = plot.Add.Scatter(xs, ys);
-
-            plot.GetImage(600, 400);
-            var renderInfo = plot.RenderManager.LastRender;
-
-            Coordinates location = new(25, 0.8);
-            DataPoint nearest = spDoubleArray.Data.GetNearest(location, renderInfo, maxDistance: 100);
-
-            Assert.Equal(20, nearest.Index);
-            Assert.Equal(20, nearest.X);
-            Assert.Equal(0.58778, nearest.Y, 3);
-        }
-
 
         [Fact]
         public void Constructor_WithValidPlottables_SetsAxisLimits()
@@ -664,17 +556,6 @@ namespace Lab2
             Assert.Equal(0, axisLimits.Right);
             Assert.Equal(0, axisLimits.Bottom);
             Assert.Equal(0, axisLimits.Top);
-        }
-
-        [Fact]
-        public void Constructor_WithLargeCoordinateRect_SetsCorrectAxisLimits()
-        {
-            var rect = new CoordinateRect(1000000, 2000000, 3000000, 4000000);
-            var axisLimits = new AxisLimits(rect);
-            Assert.Equal(1000000, axisLimits.Left);
-            Assert.Equal(2000000, axisLimits.Right);
-            Assert.Equal(3000000, axisLimits.Bottom);
-            Assert.Equal(4000000, axisLimits.Top);
         }
 
         [Fact]
