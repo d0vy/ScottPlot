@@ -166,14 +166,6 @@ namespace Lab2
             Assert.Equal(double.NaN, result);
         }
 
-        /*[Fact]
-        public void ArrayToVector_ValidRow_ReturnsCorrectVector()
-        {
-            var values = new double[,] { { 1, 2, 3 }, { 4, 5, 6 } };
-            var result = Descriptive.ArrayToVector(values, 1);
-            Assert.Equal(new double[] { 4, 5 }, result);
-        }*/
-
         [Fact]
         public void ArrayToVector_EmptyArray_ThrowsArgumentException()
         {
@@ -188,22 +180,6 @@ namespace Lab2
             var result = Descriptive.VerticalMean(values);
             Assert.Equal(new double[] { 4, 5, 6 }, result);
         }
-        /*[Fact]
-        public void ArrayTranspose_ValidMatrix_ReturnsTransposedMatrix()
-        {
-            var values = new double[,] { { 1, 2, 3 }, { 4, 5, 6 } };
-            var result = Descriptive.ArrayTranspose(values);
-
-            var expected = new double[,] { { 1, 4 }, { 2, 5 }, { 3, 6 } };
-
-            for (int i = 0; i < values.GetLength(0); i++)
-            {
-                for (int j = 0; j < values.GetLength(1); j++)
-                {
-                    Assert.Equal(expected[i, j], result[i, j]);
-                }
-            }
-        }*/
 
         [Fact]
         public void ArrayTranspose_EmptyMatrix_ReturnsEmptyMatrix()
@@ -276,102 +252,6 @@ namespace Lab2
             Assert.Equal(3.0, result[1], 1); // standard deviation of the second column
             Assert.Equal(3.0, result[2], 1); // standard deviation of the third column
         }
-
-        // Test VerticalNanStandardDeviation
-        /*[Fact]
-        public void VerticalNanStandardDeviation_ShouldReturnCorrectResults()
-        {
-            double[,] values = {
-            { 1.0, 2.0, 3.0 },
-            { 4.0, double.NaN, 6.0 },
-            { 7.0, 8.0, 9.0 }
-        };
-
-            double[] result = Descriptive.VerticalNanStandardDeviation(values);
-
-            Assert.Equal(3.0, result[0], 1); // standard deviation ignoring NaN in first column
-            Assert.Equal(4.0, result[1], 1); // standard deviation ignoring NaN in second column
-            Assert.Equal(3.0, result[2], 1); // standard deviation ignoring NaN in third column
-        }*/
-
-        // Test VerticalStandardError
-        /*[Fact]
-        public void VerticalStandardError_ShouldReturnCorrectResults()
-        {
-            double[,] values = {
-            { 1.0, 2.0, 3.0 },
-            { 4.0, 5.0, 6.0 },
-            { 7.0, 8.0, 9.0 }
-        };
-
-            double[] result = Descriptive.VerticalStandardError(values);
-
-            Assert.Equal(1.0, result[0], 1); // standard error of the first column
-            Assert.Equal(1.0, result[1], 1); // standard error of the second column
-            Assert.Equal(1.0, result[2], 1); // standard error of the third column
-        }*/
-
-        // Test VerticalNanStandardError
-        /*[Fact]
-        public void VerticalNanStandardError_ShouldReturnCorrectResults()
-        {
-            double[,] values = {
-            { 1.0, 2.0, 3.0 },
-            { 4.0, double.NaN, 6.0 },
-            { 7.0, 8.0, 9.0 }
-        };
-
-            double[] result = Descriptive.VerticalNanStandardError(values);
-
-            Assert.Equal(1.0, result[0], 1); // standard error ignoring NaN in the first column
-            Assert.Equal(1.5, result[1], 1); // standard error ignoring NaN in the second column
-            Assert.Equal(1.0, result[2], 1); // standard error ignoring NaN in the third column
-        }*/
-
-        // Test ArrayToVector (for row)
-        /*[Fact]
-        public void ArrayToVector_ShouldReturnCorrectRowVector()
-        {
-            double[,] values = {
-            { 1.0, 2.0, 3.0 },
-            { 4.0, 5.0, 6.0 },
-            { 7.0, 8.0, 9.0 }
-        };
-
-            double[] result = Descriptive.ArrayToVector(values, row: 1);
-
-            Assert.Equal(new double[] { 4.0, 5.0, 6.0 }, result);
-        }*/
-
-        // Test ArrayToVector (for column)
-        /*[Fact]
-        public void ArrayToVector_ShouldReturnCorrectColumnVector()
-        {
-            double[,] values = {
-            { 1.0, 2.0, 3.0 },
-            { 4.0, 5.0, 6.0 },
-            { 7.0, 8.0, 9.0 }
-        };
-
-            double[] result = Descriptive.ArrayToVector(values, column: 1);
-
-            Assert.Equal(new double[] { 2.0, 5.0, 8.0 }, result);
-        }*/
-
-        // Test NanMean with NaN values
-        /*[Fact]
-        public void NanMean_ShouldReturnCorrectValue()
-        {
-            double[,] values = {
-            { 1.0, double.NaN, 3.0 },
-            { 4.0, 5.0, double.NaN },
-            { 7.0, 8.0, 9.0 }
-        };
-
-            double result = Descriptive.NanMean(values, row: 1, column: 0);
-
-            Assert.Equal(4.0, result, 1); // mean ignoring NaN values
-        }*/
 
         // Test exception for empty array in ArrayToVector
         [Fact]
