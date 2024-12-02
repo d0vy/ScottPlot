@@ -414,6 +414,7 @@ public class Plot : IDisposable
         Axes.Remove(panel);
     }
 
+
     /// <summary>
     /// Remove the given Axis from the <see cref="Axes"/>.
     /// </summary>
@@ -434,6 +435,7 @@ public class Plot : IDisposable
             PlottableList.Remove(item);
         }
     }
+
 
     /// <summary>
     /// Remove a all instances of a specific type from the <see cref="PlottableList"/>.
